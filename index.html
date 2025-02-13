@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Moon Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #282c34;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .fact {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #61dafb;
+            color: #282c34;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Random Moon Facts</h1>
+        <div id="factDisplay" class="fact"></div>
+        <button id="factButton">Get Random Fact</button>
+    </div>
+    <script>
+        const moonFacts = [
+            {
+                "fact": "Earth's Only Natural Satellite",
+                "description": "The Moon is the only natural satellite of Earth and is the fifth largest moon in the solar system."
+            },
+            {
+                "fact": "Distance from Earth",
+                "description": "The average distance from the Earth to the Moon is about 238,855 miles (384,400 kilometers)."
+            },
+            {
+                "fact": "Lunar Phases",
+                "description": "The Moon goes through eight distinct phases in a lunar cycle, which lasts about 29.5 days."
+            },
+            {
+                "fact": "Gravity",
+                "description": "The Moon's gravity is about 1/6th that of Earth's."
+            },
+            {
+                "fact": "Surface Features",
+                "description": "The Moon's surface is covered with craters, mountains, and flat plains called 'maria.'"
+            },
+            {
+                "fact": "No Atmosphere",
+                "description": "The Moon has a very thin atmosphere, which means it cannot support life as we know it."
+            },
+            {
+                "fact": "Tidal Locking",
+                "description": "The Moon is in synchronous rotation with Earth, meaning we always see the same side of the Moon."
+            },
+            {
+                "fact": "Water Ice",
+                "description": "There are permanently shadowed craters at the Moon's poles that contain water ice."
+            },
+            {
+                "fact": "Apollo Missions",
+                "description": "The first successful manned mission to the Moon was Apollo 11, which landed on July 20, 1969."
+            },
+            {
+                "fact": "Cultural Significance",
+                "description": "The Moon has been a significant part of human culture, mythology, and science throughout history."
+            }
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * moonFacts.length);
+            const fact = moonFacts[randomIndex];
+            const factDisplay = document.getElementById('factDisplay');
+            
+            factDisplay.innerHTML = `<strong>${fact.fact}</strong><p>${fact.description}</p>`;
+            factDisplay.style.opacity = 0; // Reset opacity for fade-in effect
+            setTimeout(() => {
+                factDisplay.style.opacity = 1; // Fade in
+            }, 10);
+        });
+    </script>
+</body>
+</html>
